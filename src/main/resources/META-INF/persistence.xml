@@ -4,7 +4,6 @@
   version="3.0">
     <persistence-unit name="jpa-tutorial" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>no.hvl.dat250.jpa.tutorial.basicexample.Todo</class>
         <class>no.hvl.dat250.jpa.tutorial.creditcards.Pincode</class>
         <class>no.hvl.dat250.jpa.tutorial.creditcards.CreditCard</class>
         <class>no.hvl.dat250.jpa.tutorial.creditcards.Bank</class>

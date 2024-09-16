@@ -5,16 +5,25 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import no.hvl.dat250.jpa.tutorial.creditcards.*;
 
+import java.sql.SQLException;
+
 public class CreditCardsMain {
 
   static final String PERSISTENCE_UNIT_NAME = "jpa-tutorial";
 
   public static void main(String[] args) {
-    try (EntityManagerFactory factory = Persistence.createEntityManagerFactory(
+      try {
+          org.h2.tools.Server.createWebServer("-web", "-webAllowOthers", "-webPort", "8082").start();
+      } catch (SQLException e) {
+          throw new RuntimeException(e);
+      }
+
+      try (EntityManagerFactory factory = Persistence.createEntityManagerFactory(
         PERSISTENCE_UNIT_NAME); EntityManager em = factory.createEntityManager()) {
       em.getTransaction().begin();
       createObjects(em);
       em.getTransaction().commit();
+
     }
 
   }
