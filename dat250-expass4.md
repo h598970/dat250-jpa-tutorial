@@ -10,7 +10,9 @@
 ## Database tables
 Firstly I changed the show_sql value to true in the persistence.xml file.
 This allowed me to watch the sql commands being sent to the database from persistence.
+
 ![Screenshot of SQL from persistence and hibernate](screenshot_persistence_sql_hibernate.png)
 
 Secondly I connected to the H2 web console and connected to the database to inspect the contents of the database tables.
+
 ![Screenshot of ](screenshot_h2_dashboard.png)
