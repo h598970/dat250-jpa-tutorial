@@ -3,6 +3,7 @@ package no.hvl.dat250.jpa.tutorial.creditcards.driver;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import no.hvl.dat250.jpa.tutorial.creditcards.*;
 
 public class CreditCardsMain {
 
@@ -19,6 +20,39 @@ public class CreditCardsMain {
   }
 
   private static void createObjects(EntityManager em) {
-    // TODO: Create object world as shown in the README.md.
+    Customer customer = new Customer();
+    customer.setName("Max Mustermann");
+    Address address = new Address();
+    address.setStreet("Inndalsveien");
+    address.setNumber(28);
+    address.addOwner(customer);
+    customer.addAddress(address);
+    Bank bank = new Bank();
+    bank.setName("Pengebank");
+    CreditCard cardOne = new CreditCard();
+    CreditCard cardTwo = new CreditCard();
+    bank.addCreditCard(cardOne);
+    bank.addCreditCard(cardTwo);
+    customer.addCreditCard(cardOne);
+    customer.addCreditCard(cardTwo);
+    cardOne.setBank(bank);
+    cardTwo.setBank(bank);
+    cardOne.setNumber(12345);
+    cardTwo.setNumber(123);
+    cardOne.setBalance(-5000);
+    cardTwo.setBalance(1);
+    cardOne.setCreditLimit(-10000);
+    cardTwo.setCreditLimit(2000);
+    Pincode pin = new Pincode();
+    pin.setCode("123");
+    pin.setCount(1);
+    cardOne.setPincode(pin);
+    cardTwo.setPincode(pin);
+    em.persist(customer);
+    em.persist(address);
+    em.persist(bank);
+    em.persist(cardOne);
+    em.persist(cardTwo);
+    em.persist(pin);
   }
 }
