@@ -59,7 +59,7 @@ public class Customer {
     }
     public void addAddress(Address address) {
         addresses.add(address);
-        address.getOwners().add(this);
+        address.addOwner(this);
     }
     public void addCreditCard(CreditCard creditCard) {
         creditCards.add(creditCard);
